@@ -32,6 +32,7 @@ def num_words_matching(first_List,second_List):
 #Input is two common names for a word
 #Output is the similarity score
 def similarityScore(wordOne, wordTwo):
+
 	synOne = wordnet.synsets(wordOne)
 	synTwo = wordnet.synsets(wordTwo)
 	score = 0
@@ -48,6 +49,11 @@ def similarityScore(wordOne, wordTwo):
 	print(average)
 	return average
 
-#Example Calls
-similarityScore("chair", "man")
-num_words_matching("This is a - wait for it - example sentence!", "Example Sentence")
+def searchScore(query,wordTwo,confidence):
+	sim = similarityScore(query,wordTwo)
+	score = confidence * sim
+	return score
+searchScore("boy", "girl", .90)
+searchScore("food", "pizza", .70)
+#num_words_matching("This is a - wait for it - example sentence!", "Example Sentence")
+
